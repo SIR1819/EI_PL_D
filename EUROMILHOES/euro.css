@@ -1,0 +1,23 @@
+body {background-color: aliceblue;}
+
+#keys ul {display: inline-block;}
+#keys ul li {
+    display: table-cell;
+    width : 50px;
+    height : 50px;
+    font-size: 30px;
+    font-weight: bold;
+    border-style : solid;
+    border-width: 2px;
+    border-radius: 27px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.numbers li {
+    background-color: darkorange;
+}
+
+#keys ul.stars li {
+    background-color: yellow;
+}

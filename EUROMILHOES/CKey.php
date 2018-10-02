@@ -24,11 +24,14 @@ class Key {
         sort($key);
         return $key;
     }
+
+    public function asJSON() {
+        return json_encode($this);
+    }
 }
 
 // test code
-$newKey = new Key();
-
-var_dump($newKey);
+// $newKey = new Key();
+//var_dump($newKey);
 
 ?>

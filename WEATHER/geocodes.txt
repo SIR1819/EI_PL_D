@@ -1,1 +1,10 @@
 https://google-developers.appspot.com/maps/documentation/utils/geocoder
+
+
+
+53.152195
+23.166685
+
+https://api.darksky.net/forecast/814e5b27d87937feb926c8b0178f77c3/53.152195,23.166685?units=si
+
+

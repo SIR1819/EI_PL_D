@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Euromilhões Keys </title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="euro.css">
+</head>
+<body>
+    <h1> Euromilhões </h1>
+    <div id="control">
+        <button id="genkey">Generate</button>
+        <button id="clearkey">Clear Keys</button>
+    </div>
+    <div id="keys">
+        <div id="key">
+        <ul class="numbers">
+            <li>1</li>
+            <li>4</li>
+            <li>23</li>
+            <li>34</li>
+            <li>44</li>
+        </ul>
+        <ul class="stars">
+            <li>3</li>
+            <li>7</li>
+        </ul>
+        </div>
+    </div>
+    <p>&copy; Network Information Systems 2018</p>
+</body>
+<script>
+    var myGenButton = document.getElementById("genkey");
+    var myClearButton = document.getElementById("clearkey");
+
+
+    function postKey(key) {
+
+        function fillList(list,array) {
+            console.log("initial list:",  list);
+            array.forEach(element => {
+                let newLI =  document.createElement("li");
+                newLI.innerHTML = element;
+                list.appendChild(newLI);
+            });
+            console.log("final list:",list);
+        }
+
+        myDIVkey = document.createElement("div");
+        myDIVkey.className = "key";
+
+        myULstars = document.createElement("ul");
+        myULstars.className = "stars";
+
+        fillList(myULstars,key.stars);
+
+        myULnumbers = document.createElement("ul");
+        myULnumbers.className = "numbers";
+        
+        fillList(myULnumbers,key.numbers);
+
+        divKeys = document.getElementById("keys");
+        myDIVkey.appendChild(myULstars);
+        myDIVkey.appendChild(myULnumbers);
+        divKeys.appendChild(myDIVkey);
+    }
+
+    function generateKey() {
+        console.log("You clicked Generate key ");
+      
+        myKey = {
+            "stars" : [],
+            "numbers" : []
+        };
+
+        myKey.stars = extractor(1,12,2);
+        myKey.numbers = extractor(1,50,5);
+
+        postKey(myKey);
+
+        console.log(myKey);
+
+        function extractor(min,max,num) {
+            let extraction = [];
+            
+            while (extraction.length < num) {
+                rnumber = min + Math.floor(Math.random() * (max-min+1));
+                if (!extraction.includes(rnumber) ) {
+                    extraction.push(rnumber);
+                }
+            }
+
+            extraction.sort(function (a,b) {return (a-b)});
+
+            return extraction;
+        }
+    }
+
+
+
+    console.log(myGenButton,myClearButton);
+
+    myGenButton.addEventListener("click",generateKey);
+    myClearButton.addEventListener("click",function () {
+        let divKeys = document.getElementById("keys");
+        divKeys.innerHTML = "";
+    });
+
+
+
+
+</script>
+</html>

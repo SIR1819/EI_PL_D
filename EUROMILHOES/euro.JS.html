@@ -9,6 +9,8 @@
     <h1> Euromilhões </h1>
     <div id="control">
         <button id="genkey">Generate</button>
+        <button id="getkey">Get Key</button>
+        <button id="fetchkey">Fetch Key</button>
         <button id="clearkey">Clear Keys</button>
     </div>
     <div id="keys">
@@ -31,6 +33,48 @@
 <script>
     var myGenButton = document.getElementById("genkey");
     var myClearButton = document.getElementById("clearkey");
+    var myGetButton = document.getElementById("getkey");
+    var myFetchButton = document.getElementById("fetchkey");
+
+
+
+    function fetchKey() {
+        
+        fetch("getKey.php")
+         .then(function (response) {
+             return (response.json());
+         })
+         .then(function (data) {
+             postKey(data);
+         })
+         .catch(function (error) {
+             console.log("ERROR reason:",error.message);
+         });
+    }
+
+    function getKey() {
+
+        // new request
+        var xReq = new XMLHttpRequest();
+
+        xReq.onreadystatechange = function () {
+            console.log(this.readyState, this.status);
+            // the request finished / loaded and http was ok
+            if (this.readyState == 4 && this.status == 200) {
+                console.log("after loaded",this.responseText);
+                key = JSON.parse(this.responseText);
+                postKey(key);
+            }
+        };
+
+        // configure the request
+        xReq.open("GET","getKey.php");
+        
+        // makes the request
+        xReq.send();
+        //console.log("after sent",xReq.responseText);
+    }
+
 
 
     function postKey(key) {
@@ -99,6 +143,9 @@
 
     console.log(myGenButton,myClearButton);
 
+
+    myFetchButton.addEventListener("click", fetchKey);
+    myGetButton.addEventListener("click", getKey);
     myGenButton.addEventListener("click",generateKey);
     myClearButton.addEventListener("click",function () {
         let divKeys = document.getElementById("keys");

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="getusers.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.0/mustache.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <div id="content">
+            <div class="container">
+                    <div class="row" id="rowcontent">
+
+                
+                    </div>
+            </div>
+    </div>
+</body>
+<script>
+    fetch("https://randomuser.me/api/?results=30")
+    .then ( function (response) {
+        return (response.json());
+    })
+    .then ( function (data) {
+        listusers(data);
+    });
+
+    function listusers(data) {
+
+        rowcontent = document.getElementById("rowcontent");
+
+        templatetext = document.getElementById("template").innerHTML;
+        Mustache.parse(templatetext);
+        renderedtext = Mustache.render(templatetext,data);
+        console.log(renderedtext);
+
+        rowcontent.innerHTML = renderedtext;
+
+    }
+</script>
+
+<script type="x-tmpl-mustache" id="template">
+        {{#results}}
+        <div class="col-lg-3 col-sm-6">
+                <div class="card hovercard">
+                    <div class="cardheader">
+    
+                    </div>
+                    <div class="avatar">
+                        <img alt="" src="{{picture.large}}">
+                    </div>
+                    <div class="info">
+                        <div class="title">
+                            <a target="_blank" href="https://scripteden.com/">{{name.first}} {{name.last}}</a>
+                        </div>
+                        <div class="desc">{{location.city}}</div>
+                        <div class="desc">{{cell}}</div>
+                        <div class="desc">{{email}}</div>
+                    </div>
+                    <div class="bottom">
+                        <a class="btn btn-primary btn-twitter btn-sm" href="https://twitter.com/webmaniac">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                        <a class="btn btn-danger btn-sm" rel="publisher"
+                           href="https://plus.google.com/+ahmshahnuralam">
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                        <a class="btn btn-primary btn-sm" rel="publisher"
+                           href="https://plus.google.com/shahnuralam">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                        <a class="btn btn-warning btn-sm" rel="publisher" href="https://plus.google.com/shahnuralam">
+                            <i class="fa fa-behance"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+                {{/results}}
+</script>
+</html>

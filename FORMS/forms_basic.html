@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form id="f1" action="dump.php" method="POST">
+        <fieldset>
+            <legend>Dados Biográficos</legend>
+        <label for="iusername">Username</label><input type="text" name="username" id="iusername" placeholder="Insira o seu username">
+        <label for="ipass">Password</label><input type="text" name="pass" id="ipass">
+        <label>idade<input type="number" max="100" min="0" name="idade" id="iidade"></label>
+        <input type="hidden" name="uid" id="iuid" value="345">
+        <input type="date" name="dn" id="idn">
+        <br>masculino <input required="required" type="radio" name="genero" value="m">
+        <br>feminino <input type="radio" name="genero" value="f">
+        <br>outro <input checked="checked" type="radio" name="genero" value="x">
+        </fieldset>
+        <fieldset>
+         <legend>Hobbies</legend>
+        <label><input type="checkbox" name="hobby[]" value="1001"> Cinema </label><br>
+        <label><input type="checkbox" name="hobby[]" value="1002"> Desporto </label><br>
+        <label><input type="checkbox" name="hobby[]" value="1003"> Dormir </label><br>
+        <label><input type="checkbox" name="hobby[]" value="1004"> Literatura </label><br>
+        <label><input checked type="checkbox" name="hobby[]" value="1005"> Comer </label><br>
+        </fieldset>
+        <legend>Nacionalidade</legend>
+            <select name="nacionalidade[]">
+                <optgroup label="Europa">
+                <option value="PT">Portugal</option>
+                <option disabled value="ES">Espanha</option>
+                <option value="FR">França</option>
+                </optgroup>
+                <optgroup label="Resto do Mundo">
+                <option value="TV">Tuvalu</option>
+                <option value="CN">China</option>
+                </optgroup>
+            </select>
+        </fieldset>
+    </fieldset>
+    <legend>Comentário</legend>
+        <textarea cols="50" rows="5" name="comment" placeholder="Comentário"></textarea>
+    </fieldset>
+
+        <fieldset>
+                <legend>Submissão</legend>
+        <input type="submit" value="Enviar Formulário">
+        <input type="reset">
+        </fieldset>
+
+    <fieldset>
+        <legend>Listas</legend>
+        <input list="browsers" id="myBrowser" name="myBrowser" />
+        <datalist id="browsers">
+            <option value="Chrome">
+            <option value="Firefox">
+            <option value="Internet Explorer">
+            <option value="Opera">
+            <option value="Operario">
+            <option value="Operaçao">
+            <option value="Safari">
+            <option value="Microsoft Edge">
+        </datalist>
+    </fieldset>
+    <fieldset>
+    <progress id="file" name="file" max="100" value="70">70%</progress>
+    </fieldset>
+
+    </form>
+</body>
+</html>

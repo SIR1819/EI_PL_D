@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form action="dump.php" method="get" id="f1">
+        username:
+        <input required="required" type="text" id="iuser" name="user" pattern="[a-zA-Z]{4,6}"
+        title="4 to 6 letters" value="pedro">
+        <br>
+        password:
+        <input type="text" id="ipass" name="pass"
+        pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@€$%&]).{4,8}" value="Aa1!">
+        <br>
+        confirm password:
+        <input type="text" id="icpass" name="cpass" >
+        <br>
+        postal code:
+        <input type="text" id="ipostal" name="postal" pattern = "[0-9]{4}-\d{3}" title="Postal code in format dddd-dd" value="4900-100">
+        <br>
+        <input type="submit" value="Send">
+    </form>
+</body>
+<script>
+    var myForm = document.getElementById("f1");
+    myForm.addEventListener("submit", validate);
+
+    function validate(submitEvent) {
+        // check if the passwords match
+        var pass = document.getElementById("ipass");
+        var cpass = document.getElementById("icpass");
+    console.log(pass.value, cpass.value)
+        if (pass.value != cpass.value) {
+            submitEvent.preventDefault();
+            return false;
+        } else {
+            return true;
+        }
+    }
+</script>
+</html>

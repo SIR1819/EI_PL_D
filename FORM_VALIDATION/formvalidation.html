@@ -10,7 +10,7 @@
     <form action="dump.php" method="get" id="f1">
         username:
         <input required="required" type="text" id="iuser" name="user" pattern="[a-zA-Z]{4,6}"
-        title="4 to 6 letters" value="pedro">
+        title="4 to 6 letters" >
         <br>
         password:
         <input type="text" id="ipass" name="pass"
@@ -26,6 +26,25 @@
     </form>
 </body>
 <script>
+
+    userfield = document.getElementById("iuser");
+    userfield.onkeyup = check;
+
+    function check () {
+    currentuser = userfield.value;
+    fetch('checkuser.php?'+'user='+currentuser)
+        .then(function (resp) {
+            return resp.json();
+        })
+        .then (function (dados) {
+            if (dados.status !== true) {
+                userfield.style.backgroundColor = "pink";
+            } else {
+                userfield.style.backgroundColor = "lime";
+            }
+        })
+    }
+
     var myForm = document.getElementById("f1");
     myForm.addEventListener("submit", validate);
 

@@ -6,9 +6,9 @@ class Database {
 	private $_connection;
 	private static $_instance; //The single instance
 	private $_host = "localhost";
-	private $_username = "php";
-	private $_password = "php";
-	private $_database = "ex_login";
+	private $_username = "dataD";
+	private $_password = "dataD";
+	private $_database = "usersd";
 	/*
 	Get an instance of the Database
 	@return Instance

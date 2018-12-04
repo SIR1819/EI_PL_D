@@ -71,4 +71,18 @@
 
     </form>
 </body>
+<script>
+myform = document.getElementById("f1");
+myform.onsubmit = valida;
+//myform.addEventListener("submit",valida);
+
+function valida() { 
+    username = document.getElementById("iusername");
+    if (username.value == "") {
+        return false;
+    }
+}
+
+
+</script>
 </html>
